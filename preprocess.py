@@ -22,21 +22,15 @@ def get_movies(csv_movies):
     return movies
 
 
-def create_train_set(ratings):
+def create_train_set():
+    ratings = get_ratings('ratings.csv')
     shuffled_ratings = ratings.sample(frac=1., random_state=RNG_SEED)
     return shuffled_ratings
 
 
-def shuffle_users(shuffled_ratings):
+def shuffle():
+    shuffled_ratings = create_train_set()
     Users = shuffled_ratings['user_emb_id'].values
-    return Users
-
-
-def shuffle_movies(shuffled_ratings):
     Movies = shuffled_ratings['movie_emb_id'].values
-    return Movies
-
-
-def shuffle_ratings(shuffled_ratings):
     Ratings = shuffled_ratings['rating'].values
-    return Ratings
+    return Users, Movies, Ratings
