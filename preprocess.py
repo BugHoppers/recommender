@@ -20,3 +20,23 @@ def get_movies(csv_movies):
     movies = pd.read_csv(csv_movies, sep='\t', encoding='latin-1',
                          usecols=['movie_id', 'title', 'genres'])
     return movies
+
+
+def create_train_set(ratings):
+    shuffled_ratings = ratings.sample(frac=1., random_state=RNG_SEED)
+    return shuffled_ratings
+
+
+def shuffle_users(shuffled_ratings):
+    Users = shuffled_ratings['user_emb_id'].values
+    return Users
+
+
+def shuffle_movies(shuffled_ratings):
+    Movies = shuffled_ratings['movie_emb_id'].values
+    return Movies
+
+
+def shuffle_ratings(shuffled_ratings):
+    Ratings = shuffled_ratings['rating'].values
+    return Ratings
