@@ -18,7 +18,7 @@ def get_movies(csv):
 
 def create_train_set(csv):
     ratings, _, _ = get_ratings(csv)
-    shuffled_ratings = ratings.sample(frac=1., random_state=np.random.RandomState)
+    shuffled_ratings = ratings.sample(frac=1., random_state= np.random.RandomState)
     return shuffled_ratings
 
 
